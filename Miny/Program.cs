@@ -7,13 +7,31 @@ namespace Miny
   {
     static void Main(string[] args)
     {
-      Bomb bomb = new Bomb(5, 5);
-
+      ConsoleKeyInfo key;
+      Bomb bomb = new Bomb(20, 20);
+      Player player = new Player(20, 20);
       while (true)
       {
         Console.Clear();
-        Console.WriteLine($"Bomba je na souřadnicích x={bomb.X}; y={bomb.Y}");
-        Thread.Sleep(500);
+        Console.WriteLine($"Bomb:   x={bomb.X}; y={bomb.Y}");
+        Console.WriteLine($"Player: x={player.X}; y={player.Y}");
+        key = Console.ReadKey(true);
+        if(key.Key == ConsoleKey.UpArrow)
+        {
+          player.MoveUp();
+        }
+        else if(key.Key == ConsoleKey.DownArrow)
+        {
+          player.MoveDown();
+        }
+        else if (key.Key == ConsoleKey.RightArrow)
+        {
+          player.MoveRight();
+        }
+        else if (key.Key == ConsoleKey.LeftArrow)
+        {
+          player.MoveLeft();
+        }
       }
     }
   }
